@@ -1,18 +1,16 @@
 {
     "version": 2,
-    "builds": [
-      {
-        "src": "package.json",
-        "use": "@vercel/static-build",
-        "config": {
-          "distDir": "build"
-        }
-      }
-    ],
     "routes": [
       {
+        "src": "/api/(.*)",
+        "dest": "/frontend/liquidity-dapp/index.js"
+      },
+      {
+        "handle": "filesystem"
+      },
+      {
         "src": "/(.*)",
-        "dest": "/frontend/liquidity-dapp/build/$1"
+        "dest": "/build/$1"
       }
     ]
   }
